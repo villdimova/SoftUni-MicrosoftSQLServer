@@ -1,7 +1,7 @@
 
 CREATE DATABASE	Hotel	
 
---•	Employees (Id, FirstName, LastName, Title, Notes)
+--â€¢	Employees (Id, FirstName, LastName, Title, Notes)
 CREATE TABLE Employees
 (	Id INT PRIMARY KEY,
 	FirstName NVARCHAR(50) NOT NULL,
@@ -15,7 +15,7 @@ VALUES
 (1, 'Tanya', 'Petrova', 'Chef', 'best'),
 (2, 'Peter', 'Ivanov', 'CEO', 'best'),
 (3, 'Maria', 'Arnaudova', 'Cleaner', NULL)
---•	Customers (AccountNumber, FirstName, LastName, PhoneNumber, EmergencyName, EmergencyNumber, Notes)
+--â€¢	Customers (AccountNumber, FirstName, LastName, PhoneNumber, EmergencyName, EmergencyNumber, Notes)
 CREATE TABLE Customers
 (	
 	AccountNumber INT PRIMARY KEY,
@@ -32,7 +32,7 @@ VALUES
 (92, 'Ivan', 'Ivanov', '2654515', 'Marti', '48545855',NUll),
 (93, 'Katy', 'Simeonova', '565654654', 'Ana', '56556544',NUll)
 
---•	RoomStatus (RoomStatus, Notes)
+--â€¢	RoomStatus (RoomStatus, Notes)
 CREATE TABLE RoomStatus
 (	
 	RoomStatus NVARCHAR(20) NOT NULL,
@@ -45,7 +45,7 @@ VALUES
 ('cleaning',NULL)
 
 
---•	RoomTypes (RoomType, Notes)
+--â€¢	RoomTypes (RoomType, Notes)
 CREATE TABLE RoomTypes
 (	
 	RoomType VARCHAR(20) NOT NULL,
@@ -58,7 +58,7 @@ VALUES
 ('two bedroom', NULL),
 ('apartment', NULL)
 
---•	BedTypes (BedType, Notes)
+--â€¢	BedTypes (BedType, Notes)
 CREATE TABLE BedTypes
 (	
 	BedType VARCHAR(20) NOT NULL,
@@ -70,7 +70,7 @@ VALUES
 ('doublesize', NULL),
 ('three single beds', NULL)
 
---•	Rooms (RoomNumber, RoomType, BedType, Rate, RoomStatus, Notes)
+--â€¢	Rooms (RoomNumber, RoomType, BedType, Rate, RoomStatus, Notes)
 CREATE TABLE Rooms
 (	
 	RoomNumber INT PRIMARY KEY,
@@ -85,7 +85,7 @@ VALUES
 (128,'one bedroom','onesize',8, 'cleaning', NULL),
 (254,'two bedroom','three single beds',8, 'free', NULL),
 (302,'apartment','doublesize',8, 'occupied', NULL)
---•	Payments (Id, EmployeeId, PaymentDate, AccountNumber, FirstDateOccupied, LastDateOccupied, 
+--â€¢	Payments (Id, EmployeeId, PaymentDate, AccountNumber, FirstDateOccupied, LastDateOccupied, 
 --TotalDays, AmountCharged, TaxRate, TaxAmount, PaymentTotal, Notes)
 
 CREATE TABLE Payments
@@ -109,7 +109,7 @@ VALUES
 (2,2,GETDATE(), 92, '2/1/2020', '2/6/2020', 5, 752.36, 10, 5, 767.36, NULL),
 (3,2,GETDATE(), 93, '8/10/2020', '8/15/2020', 5, 752.36, 10, 5, 767.36, NULL)
 
---•	Occupancies (Id, EmployeeId, DateOccupied, AccountNumber, RoomNumber, RateApplied, PhoneCharge, Notes)
+--â€¢	Occupancies (Id, EmployeeId, DateOccupied, AccountNumber, RoomNumber, RateApplied, PhoneCharge, Notes)
 
 CREATE TABLE Occupancies
 (	
@@ -129,4 +129,12 @@ VALUES
 (22,3, GETDATE(),92, 254, NULL, NULL,NULL),
 (23,3, GETDATE(),93, 302, NULL, NULL,NULL)
 
+UPDATE Payments 
+SET TaxRate -=  TaxRate*0.03
+
+SELECT TaxRate FROM Payments
+
+SELECT * FROM Occupancies
+
+DELETE FROM Occupancies;
 
