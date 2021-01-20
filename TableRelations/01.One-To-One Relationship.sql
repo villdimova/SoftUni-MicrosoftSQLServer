@@ -1,5 +1,3 @@
-CREATE DATABASE PersonalInfo
-
 CREATE TABLE Passports
 (
 	PassportID INT PRIMARY KEY,
@@ -11,7 +9,7 @@ CREATE TABLE Persons
 	PersonID INT PRIMARY KEY IDENTITY,
 	FirstName NVARCHAR(30) NOT NULL,
 	Salary DECIMAL(10,2) NOT NULL,
-	PassportID INT FOREIGN KEY REFERENCES Passports(PassportID)
+	PassportID INT UNIQUE FOREIGN KEY REFERENCES Passports(PassportID)
 )
 
 INSERT INTO Passports(PassportID,PassportNumber)
